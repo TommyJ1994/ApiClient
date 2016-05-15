@@ -3,7 +3,18 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope, $http, ApiEndpoint) {
 
 $scope.showUserOne = false;
+$scope.userOneFailure = false;
 
+$scope.showUserTwo = false;
+$scope.userTwoFailure = false;
+
+$scope.showUserList = false;
+$scope.userListFailure = false;
+
+  /**
+	 * Method to add a user via the API.
+   * Triggers UI change for success/failure.
+	 */
   $scope.addUserOne = function()
   {
       var user = {
@@ -45,10 +56,14 @@ $scope.showUserOne = false;
 
     }),
       function (error) {
-          alert("Scanning failed: " + error);
+          $scope.userOneFailure = true;
       }
   }
 
+  /**
+   * Method to add a second user via the API.
+   * Triggers UI change for success/failure.
+   */
   $scope.addUserTwo = function()
   {
       var user =  {
@@ -77,18 +92,34 @@ $scope.showUserOne = false;
                       "cell": "091-647-4650",
                       "PPS": "5602243F",
                       "picture": {
-                        "large": "https://randomuser.me/api/portraits/man/60.jpg",
-                        "medium": "https://randomuser.me/api/portraits/med/man/60.jpg",
-                        "thumbnail": "https://randomuser.me/api/portraits/thumb/man/60.jpg"
+                        "large": "https://randomuser.me/api/portraits/men/75.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
                       }
                     }
 
       $http.post(ApiEndpoint.url, { user }).success(function(response) {
-      console.log(response);
+        $scope.userTwoData = response;
+        $scope.showUserTwo = true;
 
     }),
       function (error) {
-          alert("Scanning failed: " + error);
+          $scope.userTwoFailure = true;
+      }
+  }
+
+  /**
+   * Method to list all users via the API.
+   */
+  $scope.listUsers = function()
+  {
+      $http.get(ApiEndpoint.url).success(function(response) {
+        $scope.userList = response.users;
+        $scope.showUserList = true;
+
+    }),
+      function (error) {
+          $scope.userListFailure = true;
       }
   }
 
