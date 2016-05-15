@@ -7,10 +7,16 @@
 
       <div class="list" ng-show="showUserOne">
         <a class="item item-avatar">
-          <img src="{{userOneData.user.picture.medium}}">
+          <img src="{{userOneData.user.picture.thumbnail}}">
           <h2>{{userOneData.user.name.title}} {{userOneData.user.name.first}} {{userOneData.user.name.last}}</h2>
           <p>{{userOneData.user.email}}</p>
           <p>PPS: {{userOneData.user.PPS}}</p>
+        </a>
+      </div>
+
+      <div class="list" ng-show="userOneFailure">
+        <a class="item item-avatar">
+            Failure.
         </a>
       </div>
 
@@ -20,16 +26,29 @@
 
     <div class="list" ng-show="showUserTwo">
       <a class="item item-avatar">
-        <img src="{{userTwoData.user.picture.medium}}">
+        <img src="{{userTwoData.user.picture.thumbnail}}">
         <h2>{{userTwoData.user.name.title}} {{userTwoData.user.name.first}} {{userTwoData.user.name.last}}</h2>
         <p>{{userTwoData.user.email}}</p>
         <p>PPS: {{userTwoData.user.PPS}}</p>
       </a>
     </div>
 
+    <div class="list" ng-show="userTwoFailure">
+      <a class="item item-avatar">
+          Failure.
+      </a>
+    </div>
+
     <button class="button button-full button-positive" ng-click="listUsers()">
       List all Users
     </button>
+
+    <div class="list" ng-show="showUserList" ng-repeat="user in userList">
+      <a class="item item-avatar">
+        <img src="http://www.leonardo-energy.org/sites/leonardo-energy/themes/leonardo_energy_theme/images/default-user.png">
+        <h2>{{user}}</h2>
+      </a>
+    </div>
 
   </ion-content>
 </ion-view>
