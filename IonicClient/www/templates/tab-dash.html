@@ -7,10 +7,10 @@
 
       <div class="list" ng-show="showUserOne">
         <a class="item item-avatar">
-          <img src="{{userOneData.user.picture.thumbnail}}">
-          <h2>{{userOneData.user.name.title}} {{userOneData.user.name.first}} {{userOneData.user.name.second}}</h2>
+          <img src="{{userOneData.user.picture.medium}}">
+          <h2>{{userOneData.user.name.title}} {{userOneData.user.name.first}} {{userOneData.user.name.last}}</h2>
           <p>{{userOneData.user.email}}</p>
-          <p>{{userOneData.user.PPS}}</p>
+          <p>PPS: {{userOneData.user.PPS}}</p>
         </a>
       </div>
 
@@ -20,10 +20,10 @@
 
     <div class="list" ng-show="showUserTwo">
       <a class="item item-avatar">
-        <img src="{{userTwoData.user.picture.thumbnail}}">
-        <h2>{{userTwoData.user.name.title}} {{userTwoData.user.name.first}} {{userTwoData.user.name.second}}</h2>
+        <img src="{{userTwoData.user.picture.medium}}">
+        <h2>{{userTwoData.user.name.title}} {{userTwoData.user.name.first}} {{userTwoData.user.name.last}}</h2>
         <p>{{userTwoData.user.email}}</p>
-        <p>{{userTwoData.user.PPS}}</p>
+        <p>PPS: {{userTwoData.user.PPS}}</p>
       </a>
     </div>
 
