@@ -6,6 +6,8 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
+.constant('ApiEndpoint', {
+  url: 'http://localhost:8090/API/api/users'})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,7 +25,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+  $httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};
+
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
